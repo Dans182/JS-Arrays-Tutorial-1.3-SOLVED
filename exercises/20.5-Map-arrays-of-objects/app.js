@@ -1,3 +1,17 @@
+function getAge(dateString) 
+{
+    var today = new Date();
+    var birthDate = (dateString);
+    var age = today.getFullYear() - birthDate.getFullYear();
+    var m = today.getMonth() - birthDate.getMonth();
+    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) 
+    {
+        age--;
+    }
+    return age;
+}
+
+
 let people = [
 	{ name: 'Joe', birthDate: new Date(1986,10,24) },
 	{ name: 'Bob', birthDate: new Date(1975,5,24) },
@@ -7,7 +21,8 @@ let people = [
 ];
 
 let simplifier = function(person){
-	return person.name;
+	return "Hello, my name is " + person.name + " and I am " + getAge(person.birthDate) + " years old";
 };
 
 console.log(people.map(simplifier));
+
